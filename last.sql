@@ -9,13 +9,13 @@ USE `Red Social` ;
 -- Table `Red Social`.`TrabajoActual`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Red Social`.`TrabajoActual` (
-  `id_trabajoActual` INT NOT NULL AUTO_INCREMENT,
+  `idtrabajoActual` INT NOT NULL AUTO_INCREMENT,
   `nombreEmpresa` VARCHAR(45) NULL,
   `direccionEmpresa` VARCHAR(45) NULL,
   `cargo` VARCHAR(45) NULL,
   `actividades` VARCHAR(100) NULL,
   `Egresados_Direccion_id_Direccion` INT NULL,
-  PRIMARY KEY (`id_trabajoActual`))
+  PRIMARY KEY (`idtrabajoActual`))
 ENGINE = InnoDB;
 
 
@@ -23,11 +23,11 @@ ENGINE = InnoDB;
 -- Table `Red Social`.`Matricula`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Red Social`.`Matricula` (
-  `id_Matricula` INT NOT NULL AUTO_INCREMENT,
+  `idMatricula` INT NOT NULL AUTO_INCREMENT,
   `Matricula` VARCHAR(10) NOT NULL,
   `Nombre` VARCHAR(45) NOT NULL,
   `e-mail` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id_Matricula`))
+  PRIMARY KEY (`idMatricula`))
 ENGINE = InnoDB;
 
 
@@ -35,10 +35,10 @@ ENGINE = InnoDB;
 -- Table `Red Social`.`Calendario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Red Social`.`Calendario` (
-  `id_Calendario` INT NOT NULL AUTO_INCREMENT,
+  `idCalendario` INT NOT NULL AUTO_INCREMENT,
   `Fecha` DATETIME NULL,
   `Descripcion` VARCHAR(100) NULL,
-  PRIMARY KEY (`id_Calendario`))
+  PRIMARY KEY (`idCalendario`))
 ENGINE = InnoDB;
 
 
@@ -46,10 +46,10 @@ ENGINE = InnoDB;
 -- Table `Red Social`.`Oferta Academica`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Red Social`.`Oferta Academica` (
-  `id_Oferta Academica` INT NOT NULL AUTO_INCREMENT,
+  `idOferta Academica` INT NOT NULL AUTO_INCREMENT,
   `Matricula_id_Matricula` INT NOT NULL,
   `Calendario_id_Calendario` INT NOT NULL,
-  PRIMARY KEY (`id_Oferta Academica`))
+  PRIMARY KEY (`idOferta Academica`))
 ENGINE = InnoDB;
 
 
@@ -57,14 +57,14 @@ ENGINE = InnoDB;
 -- Table `Red Social`.`Direccion`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Red Social`.`Direccion` (
-  `id_Direccion` INT NOT NULL AUTO_INCREMENT,
+  `idDireccion` INT NOT NULL AUTO_INCREMENT,
   `Nombre_Calle` VARCHAR(45) NOT NULL,
   `Numero` VARCHAR(45) NOT NULL,
   `Colonia` VARCHAR(45) NOT NULL,
   `Codigo_Postal` VARCHAR(5) NOT NULL,
   `Estado` VARCHAR(45) NOT NULL,
   `Pais` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id_Direccion`))
+  PRIMARY KEY (`idDireccion`))
 ENGINE = InnoDB;
 
 
@@ -86,7 +86,7 @@ ENGINE = InnoDB;
 -- Table `Red Social`.`Usuario`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Red Social`.`Usuario` (
-  `id_usuario` INT NOT NULL AUTO_INCREMENT,
+  `idusuario` INT NOT NULL AUTO_INCREMENT,
   `Nombre(s)` VARCHAR(45) NOT NULL,
   `Apellido_Pa` VARCHAR(45) NOT NULL,
   `Apellido_Ma` VARCHAR(45) NOT NULL,
@@ -99,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `Red Social`.`Usuario` (
   `Matricula_id_Matricula` INT NOT NULL,
   `Direccion_id_Direccion` INT NOT NULL,
   `Registro_idRegistro` INT NOT NULL,
-  PRIMARY KEY (`id_usuario`))
+  PRIMARY KEY (`idusuario`))
 ENGINE = InnoDB;
 
 
@@ -107,10 +107,10 @@ ENGINE = InnoDB;
 -- Table `Red Social`.`Detalle_Estudio`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Red Social`.`Detalle_Estudio` (
-  `id_DetalleEstudio` INT NOT NULL AUTO_INCREMENT,
+  `idDetalleEstudio` INT NOT NULL AUTO_INCREMENT,
   `Nivel de estudio` VARCHAR(45) NULL,
   `Universidad` VARCHAR(45) NULL,
-  PRIMARY KEY (`id_DetalleEstudio`))
+  PRIMARY KEY (`idDetalleEstudio`))
 ENGINE = InnoDB;
 
 
@@ -118,12 +118,12 @@ ENGINE = InnoDB;
 -- Table `Red Social`.`Privacidad`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Red Social`.`Privacidad` (
-  `id_Privacidad` INT NOT NULL AUTO_INCREMENT,
+  `idPrivacidad` INT NOT NULL AUTO_INCREMENT,
   `Publico` TINYINT(1) NULL,
   `Solo_amigos` TINYINT(1) NULL,
   `Amigos_de_amigos` TINYINT(1) NULL,
-  `Solo_yo` TINYINT(1) NULL,
-  PRIMARY KEY (`id_Privacidad`))
+  `Soloyo` TINYINT(1) NULL,
+  PRIMARY KEY (`idPrivacidad`))
 ENGINE = InnoDB;
 
 
@@ -144,6 +144,7 @@ CREATE TABLE IF NOT EXISTS `Red Social`.`Publicaciones` (
   `idPublicaciones` INT NOT NULL AUTO_INCREMENT,
   `Texto` VARCHAR(300) NULL,
   `Imagenes` VARCHAR(45) NULL,
+  `Hora` TIME NULL,
   `Amigos_idAmigos` INT NOT NULL,
   PRIMARY KEY (`idPublicaciones`))
 ENGINE = InnoDB;
@@ -156,6 +157,7 @@ CREATE TABLE IF NOT EXISTS `Red Social`.`Chat` (
   `idMensaje` INT NOT NULL AUTO_INCREMENT,
   `Texto` VARCHAR(1000) NOT NULL,
   `Imagen` VARCHAR(100) NOT NULL,
+  `Hora` TIME NULL,
   PRIMARY KEY (`idMensaje`))
 ENGINE = InnoDB;
 
@@ -174,9 +176,9 @@ ENGINE = InnoDB;
 -- Table `Red Social`.`Notificaciones`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Red Social`.`Notificaciones` (
-  `id_Notificaciones` INT NOT NULL AUTO_INCREMENT,
+  `idNotificaciones` INT NOT NULL AUTO_INCREMENT,
   `Registro_id_usuario` INT NULL,
-  PRIMARY KEY (`id_Notificaciones`))
+  PRIMARY KEY (`idNotificaciones`))
 ENGINE = InnoDB;
 
 
@@ -184,10 +186,10 @@ ENGINE = InnoDB;
 -- Table `Red Social`.`Status`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Red Social`.`Status` (
-  `id_Status` INT NOT NULL AUTO_INCREMENT,
+  `idStatus` INT NOT NULL AUTO_INCREMENT,
   `Descripcion` VARCHAR(45) NULL,
   `Notificaciones_id_Notificaciones` INT NOT NULL,
-  PRIMARY KEY (`id_Status`))
+  PRIMARY KEY (`idStatus`))
 ENGINE = InnoDB;
 
 
@@ -195,11 +197,11 @@ ENGINE = InnoDB;
 -- Table `Red Social`.`Solicitudes`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Red Social`.`Solicitudes` (
-  `id_Solicitudes` INT NOT NULL AUTO_INCREMENT,
+  `idSolicitudes` INT NOT NULL AUTO_INCREMENT,
   `Enviar_solicitud` VARCHAR(45) NULL,
   `Aceptar_solicitud` VARCHAR(45) NULL,
   `Eliminar_solicitud` VARCHAR(45) NULL,
-  PRIMARY KEY (`id_Solicitudes`))
+  PRIMARY KEY (`idSolicitudes`))
 ENGINE = InnoDB;
 
 
@@ -221,8 +223,8 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Red Social`.`Amigos_has_Solicitudes` (
   `Amigos_idAmigos` INT NOT NULL,
-  `Solicitudes_id_Solicitudes` INT NOT NULL,
-  PRIMARY KEY (`Amigos_idAmigos`, `Solicitudes_id_Solicitudes`))
+  `Solicitudes_idSolicitudes` INT NOT NULL,
+  PRIMARY KEY (`Amigos_idAmigos`, `Solicitudes_idSolicitudes`))
 ENGINE = InnoDB;
 
 
@@ -266,6 +268,7 @@ CREATE TABLE IF NOT EXISTS `Red Social`.`Bitacora` (
   `HoraConexion` TIME NOT NULL,
   `Usuario` VARCHAR(40) NULL,
   `ActividadRealizada` VARCHAR(45) NULL,
+  `TipodeActividad` VARCHAR(45) NULL,
   PRIMARY KEY (`idBitacora`))
 ENGINE = InnoDB;
 
@@ -274,17 +277,16 @@ ENGINE = InnoDB;
 -- Table `Red Social`.`Intereses`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Red Social`.`Intereses` (
-  `id_Intereses` INT NOT NULL AUTO_INCREMENT,
+  `idIntereses` INT NOT NULL AUTO_INCREMENT,
   `Libros` VARCHAR(45) NOT NULL,
   `Deportes` VARCHAR(45) NOT NULL,
   `Musica` VARCHAR(45) NOT NULL,
   `Peliculas` VARCHAR(45) NOT NULL,
   `Religion` VARCHAR(45) NOT NULL,
-  PRIMARY KEY (`id_Intereses`))
+  PRIMARY KEY (`idIntereses`))
 ENGINE = InnoDB;
 
 
 SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
-
